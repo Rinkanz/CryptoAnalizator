@@ -87,16 +87,16 @@ public class Cipher {
 
         StringBuilder decryptedText = new StringBuilder();
         for (String line : cipherText) {
-            for (char c : line.toCharArray()) {
-                if (ALPHABET.contains(c)) {
-                    int originalIndex = ALPHABET.indexOf(c);
+            for (char character : line.toCharArray()) {
+                if (ALPHABET.contains(character)) {
+                    int originalIndex = ALPHABET.indexOf(character);
                     int newIndex = (originalIndex - shift) % ALPHABET.size();
                     if (newIndex < 0) {
                         newIndex += ALPHABET.size();
                     }
                     decryptedText.append(ALPHABET.get(newIndex));
                 } else {
-                    decryptedText.append(c);
+                    decryptedText.append(character);
                 }
             }
             decryptedText.append("\n");
