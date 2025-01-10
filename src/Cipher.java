@@ -36,7 +36,7 @@ public class Cipher {
         List<String> originalText;
         originalText = Files.readAllLines(Path.of("src/FileManager/OriginalText.txt"));
 
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder encryptedText = new StringBuilder();
         for (String line : originalText) {
             for (char character : line.toCharArray()) {
                 if (ALPHABET.contains(character)) {
@@ -45,17 +45,17 @@ public class Cipher {
                     if (newIndex < 0) {
                         newIndex += ALPHABET.size();
                     }
-                    stringBuilder.append(ALPHABET.get(newIndex));
+                    encryptedText.append(ALPHABET.get(newIndex));
 
 
                 } else {
-                    stringBuilder.append(character);
+                    encryptedText.append(character);
                 }
             }
-            stringBuilder.append("\n");
+            encryptedText.append("\n");
         }
         try {
-            Files.write(Path.of("src/FileManager/Encrypted.txt"), stringBuilder.toString().getBytes());
+            Files.write(Path.of("src/FileManager/Encrypted.txt"), encryptedText.toString().getBytes());
             System.out.println("Текст успешно зашифрован и записан в файл \"Encrypted.txt\"");
         } catch (Exception e) {
 
